@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Copa do Mundo 2026</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#0b1020;
+    color:white;
+}
+
+header{
+    background:linear-gradient(90deg,#00b4ff,#0047ff);
+    padding:20px;
+    text-align:center;
+}
+
+header h1{
+    font-size:40px;
+}
+
+nav{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    padding:15px;
+    background:#111827;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.container{
+    width:90%;
+    margin:auto;
+    padding:20px 0;
+}
+
+.section{
+    margin-bottom:40px;
+}
+
+.section h2{
+    margin-bottom:20px;
+    color:#00b4ff;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#1e293b;
+    padding:20px;
+    border-radius:12px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+table th, table td{
+    border:1px solid #334155;
+    padding:10px;
+    text-align:center;
+}
+
+table th{
+    background:#2563eb;
+}
+
+.match{
+    background:#1e293b;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+.players{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+}
+
+.player{
+    background:#1e293b;
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+}
+
+.bet-box{
+    background:#1e293b;
+    padding:20px;
+    border-radius:12px;
+}
+
+input, select, button{
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+    border:none;
+    border-radius:8px;
+}
+
+button{
+    background:#2563eb;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+.result{
+    margin-top:15px;
+    font-size:18px;
+    color:#00ff88;
+}
+
+footer{
+    background:#111827;
+    padding:20px;
+    text-align:center;
+    margin-top:50px;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>🏆 Copa do Mundo 2026</h1>
+    <p>Todos os jogos, seleções, jogadores e palpites</p>
+</header>
+
+<nav>
+    <a href="#tabela">Tabela</a>
+    <a href="#jogos">Jogos</a>
+    <a href="#jogadores">Jogadores</a>
+    <a href="#apostas">Palpites</a>
+</nav>
+
+<div class="container">
+
+    <!-- TABELA -->
+    <section class="section" id="tabela">
+        <h2>📊 Tabela do Grupo A</h2>
+
+        <table>
+            <tr>
+                <th>Seleção</th>
+                <th>Pontos</th>
+            </tr>
+
+            <tr>
+                <td>Brasil</td>
+                <td>6</td>
+            </tr>
+
+            <tr>
+                <td>França</td>
+                <td>4</td>
+            </tr>
+
+            <tr>
+                <td>Japão</td>
+                <td>3</td>
+            </tr>
+
+            <tr>
+                <td>México</td>
+                <td>1</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- JOGOS -->
+    <section class="section" id="jogos">
+        <h2>⚽ Jogos da Copa</h2>
+
+        <div class="match">
+            <h3>Brasil 🇧🇷 vs França 🇫🇷</h3>
+            <p>📅 15/06/2026</p>
+            <p>🕒 18:00</p>
+            <p>📍 Nova York</p>
+        </div>
+
+        <div class="match">
+            <h3>Argentina 🇦🇷 vs Portugal 🇵🇹</h3>
+            <p>📅 16/06/2026</p>
+            <p>🕒 20:00</p>
+            <p>📍 Los Angeles</p>
+        </div>
+    </section>
+
+    <!-- JOGADORES -->
+    <section class="section" id="jogadores">
+        <h2>⭐ Jogadores</h2>
+
+        <div class="players">
+
+            <div class="player">
+                <h3>Vinícius Júnior</h3>
+                <p>Brasil</p>
+                <p>Atacante</p>
+            </div>
+
+            <div class="player">
+                <h3>Kylian Mbappé</h3>
+                <p>França</p>
+                <p>Atacante</p>
+            </div>
+
+            <div class="player">
+                <h3>Lionel Messi</h3>
+                <p>Argentina</p>
+                <p>Meia</p>
+            </div>
+
+            <div class="player">
+                <h3>Cristiano Ronaldo</h3>
+                <p>Portugal</p>
+                <p>Atacante</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- APOSTAS -->
+    <section class="section" id="apostas">
+        <h2>🎯 Simulador de Palpites</h2>
+
+        <div class="bet-box">
+
+            <label>Seleção 1</label>
+            <select id="team1">
+                <option>Brasil</option>
+                <option>França</option>
+                <option>Argentina</option>
+                <option>Portugal</option>
+            </select>
+
+            <label>Seleção 2</label>
+            <select id="team2">
+                <option>França</option>
+                <option>Brasil</option>
+                <option>Argentina</option>
+                <option>Portugal</option>
+            </select>
+
+            <button onclick="simulateMatch()">
+                Simular Jogo
+            </button>
+
+            <div class="result" id="result"></div>
+
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <p>🏆 Site Copa do Mundo 2026</p>
+</footer>
+
+<script>
+function simulateMatch(){
+
+    let team1 = document.getElementById("team1").value;
+    let team2 = document.getElementById("team2").value;
+
+    let score1 = Math.floor(Math.random() * 5);
+    let score2 = Math.floor(Math.random() * 5);
+
+    document.getElementById("result").innerHTML =
+        `${team1} ${score1} x ${score2} ${team2}`;
+}
+</script>
+
+</body>
+</html>
