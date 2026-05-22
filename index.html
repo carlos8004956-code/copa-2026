@@ -1,239 +1,292 @@
-<!-- ===================================== -->
-<!-- SISTEMA COMPLETO DOS 26 TIMES -->
-<!-- COM NÚMERO DA CAMISA -->
-<!-- ===================================== -->
+<!-- ======================================= -->
+<!-- TIMES CLICÁVEIS COM ESCALAÇÃO -->
+<!-- ======================================= -->
+
+<section class="section" id="times">
+
+<h2>🌍 Seleções da Copa</h2>
+
+<div class="teams">
+
+<!-- BRASIL -->
+
+<div class="team-card" onclick="showTeam('brasil')">
+
+<img src="https://flagcdn.com/w320/br.png">
+
+<h3>Brasil 🇧🇷</h3>
+
+</div>
+
+<!-- ARGENTINA -->
+
+<div class="team-card" onclick="showTeam('argentina')">
+
+<img src="https://flagcdn.com/w320/ar.png">
+
+<h3>Argentina 🇦🇷</h3>
+
+</div>
+
+<!-- FRANÇA -->
+
+<div class="team-card" onclick="showTeam('franca')">
+
+<img src="https://flagcdn.com/w320/fr.png">
+
+<h3>França 🇫🇷</h3>
+
+</div>
+
+<!-- PORTUGAL -->
+
+<div class="team-card" onclick="showTeam('portugal')">
+
+<img src="https://flagcdn.com/w320/pt.png">
+
+<h3>Portugal 🇵🇹</h3>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ======================================= -->
+<!-- ÁREA DA ESCALAÇÃO -->
+<!-- ======================================= -->
+
+<section class="section">
+
+<h2>📋 Escalação</h2>
+
+<div id="team-info" class="team-info">
+
+<h3>Clique em um time</h3>
+
+</div>
+
+</section>
+
+<!-- ======================================= -->
+<!-- CSS -->
+<!-- ======================================= -->
+
+<style>
+
+.team-info{
+    background:#1e293b;
+    padding:25px;
+    border-radius:15px;
+    margin-top:20px;
+}
+
+.team-info h2{
+    margin-bottom:15px;
+    color:#00b4ff;
+}
+
+.lineup{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+
+.player-card{
+    background:#0f172a;
+    padding:15px;
+    border-radius:12px;
+    text-align:center;
+}
+
+.player-card img{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:10px;
+}
+
+</style>
+
+<!-- ======================================= -->
+<!-- JAVASCRIPT -->
+<!-- ======================================= -->
 
 <script>
-
-const teamsData = {
-
-Brasil: [
-{ numero: 1, nome: "Alisson", posicao: "Goleiro" },
-{ numero: 2, nome: "Danilo", posicao: "Lateral" },
-{ numero: 3, nome: "Marquinhos", posicao: "Zagueiro" },
-{ numero: 4, nome: "Gabriel Magalhães", posicao: "Zagueiro" },
-{ numero: 5, nome: "Casemiro", posicao: "Volante" },
-{ numero: 7, nome: "Vinícius Júnior", posicao: "Atacante" },
-{ numero: 10, nome: "Neymar", posicao: "Meia" },
-{ numero: 11, nome: "Rodrygo", posicao: "Atacante" }
-],
-
-Argentina: [
-{ numero: 1, nome: "Emiliano Martínez", posicao: "Goleiro" },
-{ numero: 10, nome: "Messi", posicao: "Meia" },
-{ numero: 9, nome: "Julián Álvarez", posicao: "Atacante" },
-{ numero: 7, nome: "De Paul", posicao: "Meia" }
-],
-
-França: [
-{ numero: 10, nome: "Mbappé", posicao: "Atacante" },
-{ numero: 7, nome: "Griezmann", posicao: "Atacante" },
-{ numero: 1, nome: "Maignan", posicao: "Goleiro" }
-],
-
-Portugal: [
-{ numero: 7, nome: "Cristiano Ronaldo", posicao: "Atacante" },
-{ numero: 8, nome: "Bruno Fernandes", posicao: "Meia" },
-{ numero: 1, nome: "Diogo Costa", posicao: "Goleiro" }
-],
-
-Alemanha: [
-{ numero: 10, nome: "Musiala", posicao: "Meia" },
-{ numero: 9, nome: "Havertz", posicao: "Atacante" }
-],
-
-Espanha: [
-{ numero: 8, nome: "Pedri", posicao: "Meia" },
-{ numero: 9, nome: "Morata", posicao: "Atacante" }
-],
-
-Inglaterra: [
-{ numero: 9, nome: "Harry Kane", posicao: "Atacante" },
-{ numero: 10, nome: "Bellingham", posicao: "Meia" }
-],
-
-Japão: [
-{ numero: 10, nome: "Kubo", posicao: "Meia" }
-],
-
-México: [
-{ numero: 9, nome: "Santiago Giménez", posicao: "Atacante" }
-],
-
-Estados Unidos: [
-{ numero: 10, nome: "Pulisic", posicao: "Atacante" }
-],
-
-Uruguai: [
-{ numero: 9, nome: "Luis Suárez", posicao: "Atacante" }
-],
-
-Croácia: [
-{ numero: 10, nome: "Modrić", posicao: "Meia" }
-],
-
-Bélgica: [
-{ numero: 7, nome: "De Bruyne", posicao: "Meia" }
-],
-
-Holanda: [
-{ numero: 4, nome: "Van Dijk", posicao: "Zagueiro" }
-],
-
-Marrocos: [
-{ numero: 2, nome: "Hakimi", posicao: "Lateral" }
-],
-
-"Coreia do Sul": [
-{ numero: 7, nome: "Son", posicao: "Atacante" }
-],
-
-Canadá: [
-{ numero: 19, nome: "Davies", posicao: "Lateral" }
-],
-
-Chile: [
-{ numero: 10, nome: "Alexis Sánchez", posicao: "Atacante" }
-],
-
-Nigéria: [
-{ numero: 9, nome: "Osimhen", posicao: "Atacante" }
-],
-
-Suíça: [
-{ numero: 10, nome: "Xhaka", posicao: "Meia" }
-],
-
-Dinamarca: [
-{ numero: 10, nome: "Eriksen", posicao: "Meia" }
-],
-
-Polônia: [
-{ numero: 9, nome: "Lewandowski", posicao: "Atacante" }
-],
-
-Senegal: [
-{ numero: 10, nome: "Sadio Mané", posicao: "Atacante" }
-],
-
-Sérvia: [
-{ numero: 9, nome: "Vlahović", posicao: "Atacante" }
-],
-
-Austrália: [
-{ numero: 7, nome: "Goodwin", posicao: "Atacante" }
-],
-
-Colômbia: [
-{ numero: 10, nome: "James Rodríguez", posicao: "Meia" }
-]
-
-};
 
 function showTeam(team){
 
 const teamInfo = document.getElementById("team-info");
 
-const jogadores = teamsData[team];
+if(team === "brasil"){
 
-let html = `
+teamInfo.innerHTML = `
 
-<h2>${team}</h2>
+<h2>Brasil 🇧🇷</h2>
 
-<table>
+<p><strong>Técnico:</strong> Dorival Júnior</p>
 
-<tr>
-<th>Número</th>
-<th>Jogador</th>
-<th>Posição</th>
-</tr>
+<h3>⚽ Escalação Titular</h3>
+
+<div class="lineup">
+
+<div class="player-card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Alisson_Becker_2018.jpg">
+<h4>Alisson</h4>
+<p>Goleiro</p>
+</div>
+
+<div class="player-card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Danilo_2018.jpg">
+<h4>Danilo</h4>
+<p>Lateral</p>
+</div>
+
+<div class="player-card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Marquinhos_2022.jpg">
+<h4>Marquinhos</h4>
+<p>Zagueiro</p>
+</div>
+
+<div class="player-card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Gabriel_Magalhaes_2022.jpg">
+<h4>Gabriel</h4>
+<p>Zagueiro</p>
+</div>
+
+<div class="player-card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Vinicius_Jr_2023.jpg">
+<h4>Vinícius Júnior</h4>
+<p>Atacante</p>
+</div>
+
+<div class="player-card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Neymar_2018.jpg">
+<h4>Neymar</h4>
+<p>Meia</p>
+</div>
+
+<div class="player-card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Rodrygo_2023.jpg">
+<h4>Rodrygo</h4>
+<p>Atacante</p>
+</div>
+
+</div>
 
 `;
 
-jogadores.forEach(jogador => {
+}
 
-html += `
+if(team === "argentina"){
 
-<tr>
-<td>${jogador.numero}</td>
-<td>${jogador.nome}</td>
-<td>${jogador.posicao}</td>
-</tr>
+teamInfo.innerHTML = `
+
+<h2>Argentina 🇦🇷</h2>
+
+<p><strong>Técnico:</strong> Lionel Scaloni</p>
+
+<h3>⚽ Escalação Titular</h3>
+
+<div class="lineup">
+
+<div class="player-card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Lionel_Messi_20180626.jpg">
+<h4>Messi</h4>
+<p>Meia</p>
+</div>
+
+<div class="player-card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Emiliano_Martinez_2022.jpg">
+<h4>Emiliano Martínez</h4>
+<p>Goleiro</p>
+</div>
+
+<div class="player-card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Julian_Alvarez_2022.jpg">
+<h4>Julián Álvarez</h4>
+<p>Atacante</p>
+</div>
+
+</div>
 
 `;
 
-});
+}
 
-html += `</table>`;
+if(team === "franca"){
 
-teamInfo.innerHTML = html;
+teamInfo.innerHTML = `
+
+<h2>França 🇫🇷</h2>
+
+<p><strong>Técnico:</strong> Didier Deschamps</p>
+
+<h3>⚽ Escalação Titular</h3>
+
+<div class="lineup">
+
+<div class="player-card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Kylian_Mbappé_2022.jpg">
+<h4>Mbappé</h4>
+<p>Atacante</p>
+</div>
+
+<div class="player-card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Antoine_Griezmann_2018.jpg">
+<h4>Griezmann</h4>
+<p>Atacante</p>
+</div>
+
+<div class="player-card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Mike_Maignan_2022.jpg">
+<h4>Maignan</h4>
+<p>Goleiro</p>
+</div>
+
+</div>
+
+`;
+
+}
+
+if(team === "portugal"){
+
+teamInfo.innerHTML = `
+
+<h2>Portugal 🇵🇹</h2>
+
+<p><strong>Técnico:</strong> Roberto Martínez</p>
+
+<h3>⚽ Escalação Titular</h3>
+
+<div class="lineup">
+
+<div class="player-card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg">
+<h4>Cristiano Ronaldo</h4>
+<p>Atacante</p>
+</div>
+
+<div class="player-card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Bruno_Fernandes_2022.jpg">
+<h4>Bruno Fernandes</h4>
+<p>Meia</p>
+</div>
+
+<div class="player-card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Diogo_Costa_2022.jpg">
+<h4>Diogo Costa</h4>
+<p>Goleiro</p>
+</div>
+
+</div>
+
+`;
+
+}
 
 }
 
 </script>
-
-<!-- ===================================== -->
-<!-- CARDS DOS TIMES -->
-<!-- ===================================== -->
-
-<div class="teams">
-
-<button onclick="showTeam('Brasil')">Brasil 🇧🇷</button>
-
-<button onclick="showTeam('Argentina')">Argentina 🇦🇷</button>
-
-<button onclick="showTeam('França')">França 🇫🇷</button>
-
-<button onclick="showTeam('Portugal')">Portugal 🇵🇹</button>
-
-<button onclick="showTeam('Alemanha')">Alemanha 🇩🇪</button>
-
-<button onclick="showTeam('Espanha')">Espanha 🇪🇸</button>
-
-<button onclick="showTeam('Inglaterra')">Inglaterra 🏴</button>
-
-<button onclick="showTeam('Japão')">Japão 🇯🇵</button>
-
-<button onclick="showTeam('México')">México 🇲🇽</button>
-
-<button onclick="showTeam('Estados Unidos')">Estados Unidos 🇺🇸</button>
-
-<button onclick="showTeam('Uruguai')">Uruguai 🇺🇾</button>
-
-<button onclick="showTeam('Croácia')">Croácia 🇭🇷</button>
-
-<button onclick="showTeam('Bélgica')">Bélgica 🇧🇪</button>
-
-<button onclick="showTeam('Holanda')">Holanda 🇳🇱</button>
-
-<button onclick="showTeam('Marrocos')">Marrocos 🇲🇦</button>
-
-<button onclick="showTeam('Coreia do Sul')">Coreia 🇰🇷</button>
-
-<button onclick="showTeam('Canadá')">Canadá 🇨🇦</button>
-
-<button onclick="showTeam('Chile')">Chile 🇨🇱</button>
-
-<button onclick="showTeam('Nigéria')">Nigéria 🇳🇬</button>
-
-<button onclick="showTeam('Suíça')">Suíça 🇨🇭</button>
-
-<button onclick="showTeam('Dinamarca')">Dinamarca 🇩🇰</button>
-
-<button onclick="showTeam('Polônia')">Polônia 🇵🇱</button>
-
-<button onclick="showTeam('Senegal')">Senegal 🇸🇳</button>
-
-<button onclick="showTeam('Sérvia')">Sérvia 🇷🇸</button>
-
-<button onclick="showTeam('Austrália')">Austrália 🇦🇺</button>
-
-<button onclick="showTeam('Colômbia')">Colômbia 🇨🇴</button>
-
-</div>
-
-<!-- ===================================== -->
-<!-- ÁREA ONDE MOSTRA A ESCALAÇÃO -->
-<!-- ===================================== -->
-
-<div id="team-info" style="margin-top:30px;"></div>
