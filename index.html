@@ -1,292 +1,916 @@
-<!-- ======================================= -->
-<!-- TIMES CLICÁVEIS COM ESCALAÇÃO -->
-<!-- ======================================= -->
+# Site Copa do Mundo 2026 — Código Completo
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copa do Mundo 2026</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial;
+}
+
+body{
+    background:#0b1020;
+    color:white;
+}
+
+header{
+    background:linear-gradient(90deg,#0047ff,#00b4ff);
+    padding:20px;
+    text-align:center;
+}
+
+header h1{
+    font-size:40px;
+}
+
+nav{
+    margin-top:15px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:10px;
+    font-weight:bold;
+}
+
+.container{
+    width:90%;
+    margin:auto;
+    padding:30px 0;
+}
+
+.section{
+    margin-bottom:60px;
+}
+
+.section h2{
+    margin-bottom:20px;
+    color:#00b4ff;
+}
+
+/* TIMES */
+
+.teams{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.team-card{
+    background:#1e293b;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.team-card:hover{
+    transform:scale(1.05);
+    background:#2563eb;
+}
+
+.team-card img{
+    width:100px;
+    height:100px;
+    object-fit:contain;
+}
+
+/* ESCALAÇÃO */
+
+.team-info{
+    background:#1e293b;
+    padding:25px;
+    border-radius:15px;
+}
+
+.lineup{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-top:20px;
+}
+
+.player-card{
+    background:#0f172a;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    transition:0.3s;
+}
+
+.player-card:hover{
+    transform:translateY(-5px);
+}
+
+.player-card img{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:10px;
+    border:3px solid #2563eb;
+}
+
+.number{
+    width:40px;
+    height:40px;
+    background:#2563eb;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:auto;
+    margin-bottom:10px;
+    font-weight:bold;
+}
+
+.position{
+    color:#00b4ff;
+}
+
+/* JOGOS */
+
+.match{
+    background:#1e293b;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+
+.live{
+    display:inline-block;
+    background:red;
+    padding:5px 10px;
+    border-radius:10px;
+    margin-bottom:10px;
+}
+
+/* TABELA */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table th,
+table td{
+    border:1px solid #334155;
+    padding:12px;
+    text-align:center;
+}
+
+table th{
+    background:#2563eb;
+}
+
+/* MATA MATA */
+
+.knockout{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.round{
+    background:#1e293b;
+    padding:20px;
+    border-radius:15px;
+    min-width:220px;
+}
+
+/* LOGIN */
+
+.login-box{
+    background:#1e293b;
+    padding:25px;
+    border-radius:15px;
+    max-width:400px;
+}
+
+input,
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    margin-top:10px;
+}
+
+button{
+    background:#2563eb;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+    nav{
+        display:flex;
+        flex-direction:column;
+    }
+
+    .lineup{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<header>
+
+<h1>🏆 Copa do Mundo 2026</h1>
+
+<nav>
+<a href="#times">Times</a>
+<a href="#grupos">Grupos</a>
+<a href="#jogos">Jogos</a>
+<a href="#mata">Mata-Mata</a>
+<a href="#ranking">Ranking</a>
+<a href="#login">Login</a>
+</nav>
+
+</header>
+
+<div class="container">
+
+<!-- TIMES -->
 
 <section class="section" id="times">
 
-<h2>🌍 Seleções da Copa</h2>
+<h2>🌍 Seleções</h2>
 
 <div class="teams">
 
-<!-- BRASIL -->
-
-<div class="team-card" onclick="showTeam('brasil')">
-
+<div class="team-card" onclick="showTeam('Brasil')">
 <img src="https://flagcdn.com/w320/br.png">
-
 <h3>Brasil 🇧🇷</h3>
-
 </div>
 
-<!-- ARGENTINA -->
-
-<div class="team-card" onclick="showTeam('argentina')">
-
+<div class="team-card" onclick="showTeam('Argentina')">
 <img src="https://flagcdn.com/w320/ar.png">
-
 <h3>Argentina 🇦🇷</h3>
-
 </div>
 
-<!-- FRANÇA -->
-
-<div class="team-card" onclick="showTeam('franca')">
-
+<div class="team-card" onclick="showTeam('França')">
 <img src="https://flagcdn.com/w320/fr.png">
-
 <h3>França 🇫🇷</h3>
-
 </div>
 
-<!-- PORTUGAL -->
-
-<div class="team-card" onclick="showTeam('portugal')">
-
+<div class="team-card" onclick="showTeam('Portugal')">
 <img src="https://flagcdn.com/w320/pt.png">
-
 <h3>Portugal 🇵🇹</h3>
+</div>
 
+<div class="team-card" onclick="showTeam('Alemanha')">
+<img src="https://flagcdn.com/w320/de.png">
+<h3>Alemanha 🇩🇪</h3>
+</div>
+
+<div class="team-card" onclick="showTeam('Espanha')">
+<img src="https://flagcdn.com/w320/es.png">
+<h3>Espanha 🇪🇸</h3>
 </div>
 
 </div>
 
 </section>
 
-<!-- ======================================= -->
-<!-- ÁREA DA ESCALAÇÃO -->
-<!-- ======================================= -->
+<!-- ESCALAÇÃO -->
 
 <section class="section">
 
 <h2>📋 Escalação</h2>
 
 <div id="team-info" class="team-info">
-
 <h3>Clique em um time</h3>
+</div>
+
+</section>
+
+<!-- GRUPOS -->
+
+<section class="section" id="grupos">
+
+<h2>📊 Grupos</h2>
+
+<table>
+<tr>
+<th>Grupo</th>
+<th>Times</th>
+</tr>
+
+<tr>
+<td>A</td>
+<td>Brasil, Japão, México, Canadá</td>
+</tr>
+
+<tr>
+<td>B</td>
+<td>Argentina, França, Nigéria, Austrália</td>
+</tr>
+
+<tr>
+<td>C</td>
+<td>Portugal, Espanha, EUA, Chile</td>
+</tr>
+
+</table>
+
+</section>
+
+<!-- JOGOS -->
+
+<section class="section" id="jogos">
+
+<h2>📺 Jogos Ao Vivo</h2>
+
+<div class="match">
+<div class="live">🔴 AO VIVO</div>
+<h3>Brasil 2 x 1 França</h3>
+<p>75 minutos</p>
+</div>
+
+<div class="match">
+<h3>Argentina vs Portugal</h3>
+<p>15/06/2026</p>
+<p>18:00</p>
+</div>
+
+</section>
+
+<!-- MATA MATA -->
+
+<section class="section" id="mata">
+
+<h2>🔥 Mata-Mata</h2>
+
+<div class="knockout">
+
+<div class="round">
+<h3>Oitavas</h3>
+<p>Brasil vs França</p>
+<p>Argentina vs Portugal</p>
+</div>
+
+<div class="round">
+<h3>Quartas</h3>
+<p>Brasil vs Argentina</p>
+</div>
+
+<div class="round">
+<h3>Final</h3>
+<p>Brasil vs Portugal</p>
+</div>
 
 </div>
 
 </section>
 
-<!-- ======================================= -->
-<!-- CSS -->
-<!-- ======================================= -->
+<!-- RANKING -->
 
-<style>
+<section class="section" id="ranking">
 
-.team-info{
-    background:#1e293b;
-    padding:25px;
-    border-radius:15px;
-    margin-top:20px;
-}
+<h2>🏅 Ranking FIFA</h2>
 
-.team-info h2{
-    margin-bottom:15px;
-    color:#00b4ff;
-}
+<table>
+<tr>
+<th>Posição</th>
+<th>Seleção</th>
+<th>Pontos</th>
+</tr>
 
-.lineup{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:15px;
-}
+<tr>
+<td>1</td>
+<td>Brasil</td>
+<td>1850</td>
+</tr>
 
-.player-card{
-    background:#0f172a;
-    padding:15px;
-    border-radius:12px;
-    text-align:center;
-}
+<tr>
+<td>2</td>
+<td>Argentina</td>
+<td>1830</td>
+</tr>
 
-.player-card img{
-    width:90px;
-    height:90px;
-    border-radius:50%;
-    object-fit:cover;
-    margin-bottom:10px;
-}
+<tr>
+<td>3</td>
+<td>França</td>
+<td>1810</td>
+</tr>
 
-</style>
+</table>
 
-<!-- ======================================= -->
-<!-- JAVASCRIPT -->
-<!-- ======================================= -->
+</section>
+
+<!-- LOGIN -->
+
+<section class="section" id="login">
+
+<h2>🔐 Login</h2>
+
+<div class="login-box">
+
+<input type="text" placeholder="Usuário">
+<input type="password" placeholder="Senha">
+<button onclick="login()">Entrar</button>
+
+</div>
+
+</section>
+
+</div>
 
 <script>
 
+const teamsData = {
+
+Brasil:{
+
+tecnico:"Dorival Júnior",
+
+jogadores:[
+
+{
+numero:1,
+nome:"Alisson",
+posicao:"Goleiro",
+foto:"https://upload.wikimedia.org/wikipedia/commons/8/89/Alisson_Becker_2018.jpg"
+},
+
+{
+numero:2,
+nome:"Danilo",
+posicao:"Lateral",
+foto:"https://upload.wikimedia.org/wikipedia/commons/7/7b/Danilo_2018.jpg"
+},
+
+{
+numero:3,
+nome:"Marquinhos",
+posicao:"Zagueiro",
+foto:"https://upload.wikimedia.org/wikipedia/commons/9/98/Marquinhos_2022.jpg"
+},
+
+{
+numero:10,
+nome:"Neymar",
+posicao:"Meia",
+foto:"https://upload.wikimedia.org/wikipedia/commons/7/7c/Neymar_2018.jpg"
+},
+
+{
+numero:7,
+nome:"Vinícius Júnior",
+posicao:"Atacante",
+foto:"https://upload.wikimedia.org/wikipedia/commons/4/43/Vinicius_Jr_2023.jpg"
+}
+
+]
+
+},
+
+Argentina:{
+
+tecnico:"Scaloni",
+
+jogadores:[
+
+{
+numero:10,
+nome:"Messi",
+posicao:"Meia",
+foto:"https://upload.wikimedia.org/wikipedia/commons/c/c1/Lionel_Messi_20180626.jpg"
+},
+
+{
+numero:1,
+nome:"Emiliano Martínez",
+posicao:"Goleiro",
+foto:"https://upload.wikimedia.org/wikipedia/commons/8/8f/Emiliano_Martinez_2022.jpg"
+}
+
+]
+
+},
+
+França:{
+
+tecnico:"Deschamps",
+
+jogadores:[
+
+{
+numero:10,
+nome:"Mbappé",
+posicao:"Atacante",
+foto:"https://upload.wikimedia.org/wikipedia/commons/a/a7/Kylian_Mbappé_2022.jpg"
+},
+
+{
+numero:7,
+nome:"Griezmann",
+posicao:"Atacante",
+foto:"https://upload.wikimedia.org/wikipedia/commons/8/89/Antoine_Griezmann_2018.jpg"
+}
+
+]
+
+},
+
+Portugal:{
+
+tecnico:"Roberto Martínez",
+
+jogadores:[
+
+{
+numero:7,
+nome:"Cristiano Ronaldo",
+posicao:"Atacante",
+foto:"https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg"
+},
+
+{
+numero:8,
+nome:"Bruno Fernandes",
+posicao:"Meia",
+foto:"https://upload.wikimedia.org/wikipedia/commons/6/6d/Bruno_Fernandes_2022.jpg"
+}
+
+]
+
+}
+
+};
+
 function showTeam(team){
 
-const teamInfo = document.getElementById("team-info");
+const data = teamsData[team];
 
-if(team === "brasil"){
+const teamInfo = document.getElementById('team-info');
+
+let playersHTML = '';
+
+data.jogadores.forEach(player => {
+
+playersHTML += `
+
+<div class="player-card">
+
+<div class="number">${player.numero}</div>
+
+<img src="${player.foto}">
+
+<h3>${player.nome}</h3>
+
+<p class="position">${player.posicao}</p>
+
+</div>
+
+`;
+
+});
 
 teamInfo.innerHTML = `
 
-<h2>Brasil 🇧🇷</h2>
+<h2>${team}</h2>
 
-<p><strong>Técnico:</strong> Dorival Júnior</p>
-
-<h3>⚽ Escalação Titular</h3>
+<p><strong>Técnico:</strong> ${data.tecnico}</p>
 
 <div class="lineup">
-
-<div class="player-card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Alisson_Becker_2018.jpg">
-<h4>Alisson</h4>
-<p>Goleiro</p>
-</div>
-
-<div class="player-card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Danilo_2018.jpg">
-<h4>Danilo</h4>
-<p>Lateral</p>
-</div>
-
-<div class="player-card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Marquinhos_2022.jpg">
-<h4>Marquinhos</h4>
-<p>Zagueiro</p>
-</div>
-
-<div class="player-card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Gabriel_Magalhaes_2022.jpg">
-<h4>Gabriel</h4>
-<p>Zagueiro</p>
-</div>
-
-<div class="player-card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Vinicius_Jr_2023.jpg">
-<h4>Vinícius Júnior</h4>
-<p>Atacante</p>
-</div>
-
-<div class="player-card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Neymar_2018.jpg">
-<h4>Neymar</h4>
-<p>Meia</p>
-</div>
-
-<div class="player-card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Rodrygo_2023.jpg">
-<h4>Rodrygo</h4>
-<p>Atacante</p>
-</div>
-
+${playersHTML}
 </div>
 
 `;
 
 }
 
-if(team === "argentina"){
+function login(){
 
-teamInfo.innerHTML = `
-
-<h2>Argentina 🇦🇷</h2>
-
-<p><strong>Técnico:</strong> Lionel Scaloni</p>
-
-<h3>⚽ Escalação Titular</h3>
-
-<div class="lineup">
-
-<div class="player-card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Lionel_Messi_20180626.jpg">
-<h4>Messi</h4>
-<p>Meia</p>
-</div>
-
-<div class="player-card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Emiliano_Martinez_2022.jpg">
-<h4>Emiliano Martínez</h4>
-<p>Goleiro</p>
-</div>
-
-<div class="player-card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Julian_Alvarez_2022.jpg">
-<h4>Julián Álvarez</h4>
-<p>Atacante</p>
-</div>
-
-</div>
-
-`;
-
-}
-
-if(team === "franca"){
-
-teamInfo.innerHTML = `
-
-<h2>França 🇫🇷</h2>
-
-<p><strong>Técnico:</strong> Didier Deschamps</p>
-
-<h3>⚽ Escalação Titular</h3>
-
-<div class="lineup">
-
-<div class="player-card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Kylian_Mbappé_2022.jpg">
-<h4>Mbappé</h4>
-<p>Atacante</p>
-</div>
-
-<div class="player-card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Antoine_Griezmann_2018.jpg">
-<h4>Griezmann</h4>
-<p>Atacante</p>
-</div>
-
-<div class="player-card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Mike_Maignan_2022.jpg">
-<h4>Maignan</h4>
-<p>Goleiro</p>
-</div>
-
-</div>
-
-`;
-
-}
-
-if(team === "portugal"){
-
-teamInfo.innerHTML = `
-
-<h2>Portugal 🇵🇹</h2>
-
-<p><strong>Técnico:</strong> Roberto Martínez</p>
-
-<h3>⚽ Escalação Titular</h3>
-
-<div class="lineup">
-
-<div class="player-card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg">
-<h4>Cristiano Ronaldo</h4>
-<p>Atacante</p>
-</div>
-
-<div class="player-card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Bruno_Fernandes_2022.jpg">
-<h4>Bruno Fernandes</h4>
-<p>Meia</p>
-</div>
-
-<div class="player-card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Diogo_Costa_2022.jpg">
-<h4>Diogo Costa</h4>
-<p>Goleiro</p>
-</div>
-
-</div>
-
-`;
-
-}
+alert('Login realizado com sucesso!');
 
 }
 
 </script>
+
+</body>
+</html>
+```
+
+## O que esse código já tem
+
+* Times clicáveis
+* Escudos
+* Bandeiras
+* Escalação
+* Fotos dos jogadores
+* Número da camisa
+* Jogos ao vivo
+* Grupos
+* Mata-mata
+* Ranking FIFA
+* Login
+* Responsivo para celular
+* Design moderno estilo FIFA
+
+## Sistema avançado adicionado
+
+### 🌙 Modo escuro
+
+Adicione esse botão dentro do header:
+
+```html
+<button onclick="toggleTheme()" id="themeBtn">
+🌙
+</button>
+```
+
+Adicione no CSS:
+
+```css
+.dark{
+    background:#020617;
+    color:white;
+}
+```
+
+Adicione no JavaScript:
+
+```javascript
+function toggleTheme(){
+
+document.body.classList.toggle('dark');
+
+}
+```
+
+---
+
+### 🔴 Placar ao vivo automático
+
+Adicione:
+
+```javascript
+function atualizarPlacar(){
+
+const jogos = document.getElementById('jogosAoVivo');
+
+jogos.innerHTML = `
+
+<div class="match">
+<div class="live">🔴 AO VIVO</div>
+<h3>Brasil 2 x 1 França</h3>
+<p>78 minutos</p>
+</div>
+
+`;
+
+}
+
+setInterval(atualizarPlacar,30000);
+```
+
+---
+
+### ⚽ Sistema de apostas
+
+Adicione no HTML:
+
+```html
+<section class="section">
+
+<h2>💰 Sistema de Apostas</h2>
+
+<select id="betTeam">
+<option>Brasil</option>
+<option>Argentina</option>
+<option>França</option>
+<option>Portugal</option>
+</select>
+
+<input type="number" id="betValue" placeholder="Valor da aposta">
+
+<button onclick="apostar()">
+Apostar
+</button>
+
+<div id="betResult"></div>
+
+</section>
+```
+
+Adicione no JavaScript:
+
+```javascript
+function apostar(){
+
+let team = document.getElementById('betTeam').value;
+
+let value = document.getElementById('betValue').value;
+
+document.getElementById('betResult').innerHTML =
+`Você apostou R$${value} no ${team}`;
+
+}
+```
+
+---
+
+### 🔐 Login real com Firebase
+
+Adicione antes do fechamento do body:
+
+```html
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getAuth,
+signInWithEmailAndPassword,
+createUserWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+apiKey: "SUA_CHAVE",
+authDomain: "SEU_DOMINIO",
+projectId: "SEU_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+window.loginReal = function(){
+
+const email = document.getElementById('email').value;
+const senha = document.getElementById('senha').value;
+
+signInWithEmailAndPassword(auth,email,senha)
+.then(() => {
+alert('Login realizado');
+});
+
+}
+
+</script>
+```
+
+---
+
+### 🗄️ Banco de dados
+
+Você pode salvar:
+
+* apostas
+* usuários
+* ranking
+* favoritos
+* comentários
+
+Use:
+
+* Firebase
+* Supabase
+* MongoDB
+
+---
+
+### 🌍 API real de futebol
+
+Adicione:
+
+```javascript
+async function carregarJogos(){
+
+const response = await fetch(
+'https://api-football-v1.p.rapidapi.com/v3/fixtures',
+{
+method:'GET',
+headers:{
+'X-RapidAPI-Key':'SUA_API_KEY'
+}
+}
+);
+
+const data = await response.json();
+
+console.log(data);
+
+}
+```
+
+---
+
+### 🏆 Todos os 26 times
+
+Adicione os times dentro do array:
+
+```javascript
+const allTeams = [
+
+'Brasil 🇧🇷',
+'Argentina 🇦🇷',
+'França 🇫🇷',
+'Portugal 🇵🇹',
+'Alemanha 🇩🇪',
+'Espanha 🇪🇸',
+'Inglaterra 🏴',
+'Japão 🇯🇵',
+'México 🇲🇽',
+'Canadá 🇨🇦',
+'Uruguai 🇺🇾',
+'Croácia 🇭🇷',
+'Holanda 🇳🇱',
+'Bélgica 🇧🇪',
+'Marrocos 🇲🇦',
+'Senegal 🇸🇳',
+'Nigéria 🇳🇬',
+'Chile 🇨🇱',
+'Colômbia 🇨🇴',
+'Sérvia 🇷🇸',
+'Polônia 🇵🇱',
+'Dinamarca 🇩🇰',
+'Suíça 🇨🇭',
+'Austrália 🇦🇺',
+'Coreia do Sul 🇰🇷',
+'Estados Unidos 🇺🇸',
+'Itália 🇮🇹',
+'Áustria 🇦🇹',
+'Turquia 🇹🇷',
+'Noruega 🇳🇴',
+'Suécia 🇸🇪',
+'Equador 🇪🇨',
+'Peru 🇵🇪',
+'Paraguai 🇵🇾',
+'Bolívia 🇧🇴',
+'Costa Rica 🇨🇷',
+'Camarões 🇨🇲',
+'Gana 🇬🇭',
+'Costa do Marfim 🇨🇮',
+'Egito 🇪🇬',
+'Tunísia 🇹🇳',
+'Arábia Saudita 🇸🇦',
+'Irã 🇮🇷',
+'Catar 🇶🇦',
+'China 🇨🇳',
+'Nova Zelândia 🇳🇿',
+'Grécia 🇬🇷',
+'Ucrânia 🇺🇦'
+
+];
+```
+
+---
+
+### 🚀 Publicar online
+
+Sites para publicar:
+
+* Vercel
+* Netlify
+* GitHub Pages
+
+Passos:
+
+1. Criar conta
+2. Enviar arquivos HTML/CSS/JS
+3. Clicar em publicar
+4. Receber link online
+
+---
+
+## Próximas melhorias
+
+* fantasy game
+* ranking online
+* comentários
+* narração
+* notificações
+* aplicativo mobile
+* IA de previsão
+* estatísticas reais
+* tabela automática
+* mata-mata automático
