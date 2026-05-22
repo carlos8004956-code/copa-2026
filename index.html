@@ -1,381 +1,239 @@
-<!--
-ESTRUTURA DO SITE
+<!-- ===================================== -->
+<!-- SISTEMA COMPLETO DOS 26 TIMES -->
+<!-- COM NÚMERO DA CAMISA -->
+<!-- ===================================== -->
 
-index.html
-times.html
-jogadores.html
-jogos.html
-apostas.html
-style.css
-script.js
--->
+<script>
 
-<!-- ========================= -->
-<!-- index.html -->
-<!-- ========================= -->
+const teamsData = {
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Copa do Mundo 2026</title>
-<link rel="stylesheet" href="style.css">
-</head>
+Brasil: [
+{ numero: 1, nome: "Alisson", posicao: "Goleiro" },
+{ numero: 2, nome: "Danilo", posicao: "Lateral" },
+{ numero: 3, nome: "Marquinhos", posicao: "Zagueiro" },
+{ numero: 4, nome: "Gabriel Magalhães", posicao: "Zagueiro" },
+{ numero: 5, nome: "Casemiro", posicao: "Volante" },
+{ numero: 7, nome: "Vinícius Júnior", posicao: "Atacante" },
+{ numero: 10, nome: "Neymar", posicao: "Meia" },
+{ numero: 11, nome: "Rodrygo", posicao: "Atacante" }
+],
 
-<body>
+Argentina: [
+{ numero: 1, nome: "Emiliano Martínez", posicao: "Goleiro" },
+{ numero: 10, nome: "Messi", posicao: "Meia" },
+{ numero: 9, nome: "Julián Álvarez", posicao: "Atacante" },
+{ numero: 7, nome: "De Paul", posicao: "Meia" }
+],
 
-<header>
-    <h1>🏆 Copa do Mundo 2026</h1>
+França: [
+{ numero: 10, nome: "Mbappé", posicao: "Atacante" },
+{ numero: 7, nome: "Griezmann", posicao: "Atacante" },
+{ numero: 1, nome: "Maignan", posicao: "Goleiro" }
+],
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="times.html">Times</a>
-        <a href="jogadores.html">Jogadores</a>
-        <a href="jogos.html">Jogos</a>
-        <a href="apostas.html">Apostas</a>
-    </nav>
-</header>
+Portugal: [
+{ numero: 7, nome: "Cristiano Ronaldo", posicao: "Atacante" },
+{ numero: 8, nome: "Bruno Fernandes", posicao: "Meia" },
+{ numero: 1, nome: "Diogo Costa", posicao: "Goleiro" }
+],
 
-<section class="hero">
-    <h2>Bem-vindo ao maior site da Copa 2026</h2>
-    <p>Veja jogos, seleções, jogadores e faça palpites.</p>
-</section>
+Alemanha: [
+{ numero: 10, nome: "Musiala", posicao: "Meia" },
+{ numero: 9, nome: "Havertz", posicao: "Atacante" }
+],
 
-<section class="cards">
+Espanha: [
+{ numero: 8, nome: "Pedri", posicao: "Meia" },
+{ numero: 9, nome: "Morata", posicao: "Atacante" }
+],
 
-    <div class="card">
-        <h3>⚽ 26 Seleções</h3>
-        <p>Veja todas as equipes da Copa.</p>
-    </div>
+Inglaterra: [
+{ numero: 9, nome: "Harry Kane", posicao: "Atacante" },
+{ numero: 10, nome: "Bellingham", posicao: "Meia" }
+],
 
-    <div class="card">
-        <h3>⭐ Jogadores</h3>
-        <p>Veja os craques da Copa.</p>
-    </div>
+Japão: [
+{ numero: 10, nome: "Kubo", posicao: "Meia" }
+],
 
-    <div class="card">
-        <h3>📅 Jogos</h3>
-        <p>Calendário completo.</p>
-    </div>
+México: [
+{ numero: 9, nome: "Santiago Giménez", posicao: "Atacante" }
+],
 
-    <div class="card">
-        <h3>🎯 Palpites</h3>
-        <p>Simule partidas.</p>
-    </div>
+Estados Unidos: [
+{ numero: 10, nome: "Pulisic", posicao: "Atacante" }
+],
 
-</section>
+Uruguai: [
+{ numero: 9, nome: "Luis Suárez", posicao: "Atacante" }
+],
 
-</body>
-</html>
+Croácia: [
+{ numero: 10, nome: "Modrić", posicao: "Meia" }
+],
 
-<!-- ========================= -->
-<!-- times.html -->
-<!-- ========================= -->
+Bélgica: [
+{ numero: 7, nome: "De Bruyne", posicao: "Meia" }
+],
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<title>Times</title>
-<link rel="stylesheet" href="style.css">
-</head>
+Holanda: [
+{ numero: 4, nome: "Van Dijk", posicao: "Zagueiro" }
+],
 
-<body>
+Marrocos: [
+{ numero: 2, nome: "Hakimi", posicao: "Lateral" }
+],
 
-<header>
-<h1>🌍 Seleções da Copa</h1>
-</header>
+"Coreia do Sul": [
+{ numero: 7, nome: "Son", posicao: "Atacante" }
+],
 
-<section class="teams">
+Canadá: [
+{ numero: 19, nome: "Davies", posicao: "Lateral" }
+],
 
-<div class="team">Brasil 🇧🇷</div>
-<div class="team">Argentina 🇦🇷</div>
-<div class="team">França 🇫🇷</div>
-<div class="team">Portugal 🇵🇹</div>
-<div class="team">Alemanha 🇩🇪</div>
-<div class="team">Espanha 🇪🇸</div>
-<div class="team">Inglaterra 🏴</div>
-<div class="team">Japão 🇯🇵</div>
-<div class="team">México 🇲🇽</div>
-<div class="team">Estados Unidos 🇺🇸</div>
-<div class="team">Uruguai 🇺🇾</div>
-<div class="team">Croácia 🇭🇷</div>
-<div class="team">Bélgica 🇧🇪</div>
-<div class="team">Holanda 🇳🇱</div>
-<div class="team">Marrocos 🇲🇦</div>
-<div class="team">Coreia do Sul 🇰🇷</div>
-<div class="team">Canadá 🇨🇦</div>
-<div class="team">Chile 🇨🇱</div>
-<div class="team">Nigéria 🇳🇬</div>
-<div class="team">Suíça 🇨🇭</div>
-<div class="team">Dinamarca 🇩🇰</div>
-<div class="team">Polônia 🇵🇱</div>
-<div class="team">Senegal 🇸🇳</div>
-<div class="team">Sérvia 🇷🇸</div>
-<div class="team">Austrália 🇦🇺</div>
-<div class="team">Colômbia 🇨🇴</div>
+Chile: [
+{ numero: 10, nome: "Alexis Sánchez", posicao: "Atacante" }
+],
 
-</section>
+Nigéria: [
+{ numero: 9, nome: "Osimhen", posicao: "Atacante" }
+],
 
-</body>
-</html>
+Suíça: [
+{ numero: 10, nome: "Xhaka", posicao: "Meia" }
+],
 
-<!-- ========================= -->
-<!-- jogadores.html -->
-<!-- ========================= -->
+Dinamarca: [
+{ numero: 10, nome: "Eriksen", posicao: "Meia" }
+],
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<title>Jogadores</title>
-<link rel="stylesheet" href="style.css">
-</head>
+Polônia: [
+{ numero: 9, nome: "Lewandowski", posicao: "Atacante" }
+],
 
-<body>
+Senegal: [
+{ numero: 10, nome: "Sadio Mané", posicao: "Atacante" }
+],
 
-<header>
-<h1>⭐ Jogadores da Copa</h1>
-</header>
+Sérvia: [
+{ numero: 9, nome: "Vlahović", posicao: "Atacante" }
+],
 
-<section class="players">
+Austrália: [
+{ numero: 7, nome: "Goodwin", posicao: "Atacante" }
+],
 
-<div class="player">
-<h2>Vinícius Júnior</h2>
-<p>Brasil 🇧🇷</p>
+Colômbia: [
+{ numero: 10, nome: "James Rodríguez", posicao: "Meia" }
+]
+
+};
+
+function showTeam(team){
+
+const teamInfo = document.getElementById("team-info");
+
+const jogadores = teamsData[team];
+
+let html = `
+
+<h2>${team}</h2>
+
+<table>
+
+<tr>
+<th>Número</th>
+<th>Jogador</th>
+<th>Posição</th>
+</tr>
+
+`;
+
+jogadores.forEach(jogador => {
+
+html += `
+
+<tr>
+<td>${jogador.numero}</td>
+<td>${jogador.nome}</td>
+<td>${jogador.posicao}</td>
+</tr>
+
+`;
+
+});
+
+html += `</table>`;
+
+teamInfo.innerHTML = html;
+
+}
+
+</script>
+
+<!-- ===================================== -->
+<!-- CARDS DOS TIMES -->
+<!-- ===================================== -->
+
+<div class="teams">
+
+<button onclick="showTeam('Brasil')">Brasil 🇧🇷</button>
+
+<button onclick="showTeam('Argentina')">Argentina 🇦🇷</button>
+
+<button onclick="showTeam('França')">França 🇫🇷</button>
+
+<button onclick="showTeam('Portugal')">Portugal 🇵🇹</button>
+
+<button onclick="showTeam('Alemanha')">Alemanha 🇩🇪</button>
+
+<button onclick="showTeam('Espanha')">Espanha 🇪🇸</button>
+
+<button onclick="showTeam('Inglaterra')">Inglaterra 🏴</button>
+
+<button onclick="showTeam('Japão')">Japão 🇯🇵</button>
+
+<button onclick="showTeam('México')">México 🇲🇽</button>
+
+<button onclick="showTeam('Estados Unidos')">Estados Unidos 🇺🇸</button>
+
+<button onclick="showTeam('Uruguai')">Uruguai 🇺🇾</button>
+
+<button onclick="showTeam('Croácia')">Croácia 🇭🇷</button>
+
+<button onclick="showTeam('Bélgica')">Bélgica 🇧🇪</button>
+
+<button onclick="showTeam('Holanda')">Holanda 🇳🇱</button>
+
+<button onclick="showTeam('Marrocos')">Marrocos 🇲🇦</button>
+
+<button onclick="showTeam('Coreia do Sul')">Coreia 🇰🇷</button>
+
+<button onclick="showTeam('Canadá')">Canadá 🇨🇦</button>
+
+<button onclick="showTeam('Chile')">Chile 🇨🇱</button>
+
+<button onclick="showTeam('Nigéria')">Nigéria 🇳🇬</button>
+
+<button onclick="showTeam('Suíça')">Suíça 🇨🇭</button>
+
+<button onclick="showTeam('Dinamarca')">Dinamarca 🇩🇰</button>
+
+<button onclick="showTeam('Polônia')">Polônia 🇵🇱</button>
+
+<button onclick="showTeam('Senegal')">Senegal 🇸🇳</button>
+
+<button onclick="showTeam('Sérvia')">Sérvia 🇷🇸</button>
+
+<button onclick="showTeam('Austrália')">Austrália 🇦🇺</button>
+
+<button onclick="showTeam('Colômbia')">Colômbia 🇨🇴</button>
+
 </div>
 
-<div class="player">
-<h2>Rodrygo</h2>
-<p>Brasil 🇧🇷</p>
-</div>
+<!-- ===================================== -->
+<!-- ÁREA ONDE MOSTRA A ESCALAÇÃO -->
+<!-- ===================================== -->
 
-<div class="player">
-<h2>Mbappé</h2>
-<p>França 🇫🇷</p>
-</div>
-
-<div class="player">
-<h2>Messi</h2>
-<p>Argentina 🇦🇷</p>
-</div>
-
-<div class="player">
-<h2>Cristiano Ronaldo</h2>
-<p>Portugal 🇵🇹</p>
-</div>
-
-<div class="player">
-<h2>Bellingham</h2>
-<p>Inglaterra 🏴</p>
-</div>
-
-<div class="player">
-<h2>Musiala</h2>
-<p>Alemanha 🇩🇪</p>
-</div>
-
-<div class="player">
-<h2>Pedri</h2>
-<p>Espanha 🇪🇸</p>
-</div>
-
-</section>
-
-</body>
-</html>
-
-<!-- ========================= -->
-<!-- jogos.html -->
-<!-- ========================= -->
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<title>Jogos</title>
-<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<header>
-<h1>📅 Jogos da Copa</h1>
-</header>
-
-<section class="matches">
-
-<div class="match">
-<h2>Brasil 🇧🇷 vs França 🇫🇷</h2>
-<p>15/06/2026</p>
-<p>18:00</p>
-</div>
-
-<div class="match">
-<h2>Argentina 🇦🇷 vs Portugal 🇵🇹</h2>
-<p>16/06/2026</p>
-<p>20:00</p>
-</div>
-
-<div class="match">
-<h2>Alemanha 🇩🇪 vs Espanha 🇪🇸</h2>
-<p>17/06/2026</p>
-<p>19:00</p>
-</div>
-
-</section>
-
-</body>
-</html>
-
-<!-- ========================= -->
-<!-- apostas.html -->
-<!-- ========================= -->
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<title>Apostas</title>
-<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<header>
-<h1>🎯 Simulador da Copa</h1>
-</header>
-
-<section class="bet">
-
-<select id="team1">
-<option>Brasil</option>
-<option>Argentina</option>
-<option>França</option>
-<option>Portugal</option>
-</select>
-
-<select id="team2">
-<option>França</option>
-<option>Brasil</option>
-<option>Argentina</option>
-<option>Portugal</option>
-</select>
-
-<button onclick="simulate()">Simular</button>
-
-<h2 id="resultado"></h2>
-
-</section>
-
-<script src="script.js"></script>
-
-</body>
-</html>
-
-<!-- ========================= -->
-<!-- style.css -->
-<!-- ========================= -->
-
-body{
-    margin:0;
-    font-family:Arial;
-    background:#0f172a;
-    color:white;
-}
-
-header{
-    background:#1d4ed8;
-    padding:20px;
-    text-align:center;
-}
-
-nav{
-    margin-top:15px;
-}
-
-nav a{
-    color:white;
-    margin:10px;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-.hero{
-    text-align:center;
-    padding:60px 20px;
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-    padding:20px;
-}
-
-.card{
-    background:#1e293b;
-    padding:20px;
-    border-radius:12px;
-}
-
-.teams,
-.players,
-.matches{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-    padding:20px;
-}
-
-.team,
-.player,
-.match{
-    background:#1e293b;
-    padding:20px;
-    border-radius:12px;
-    text-align:center;
-}
-
-.bet{
-    max-width:500px;
-    margin:auto;
-    padding:40px;
-}
-
-select,
-button{
-    width:100%;
-    padding:12px;
-    margin-top:15px;
-    border:none;
-    border-radius:10px;
-}
-
-button{
-    background:#2563eb;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#1d4ed8;
-}
-
-<!-- ========================= -->
-<!-- script.js -->
-<!-- ========================= -->
-
-function simulate(){
-
-    let team1 = document.getElementById("team1").value;
-    let team2 = document.getElementById("team2").value;
-
-    let gols1 = Math.floor(Math.random() * 5);
-    let gols2 = Math.floor(Math.random() * 5);
-
-    document.getElementById("resultado").innerHTML =
-        `${team1} ${gols1} x ${gols2} ${team2}`;
-}
+<div id="team-info" style="margin-top:30px;"></div>
