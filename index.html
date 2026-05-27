@@ -1,11 +1,484 @@
+# Novo Portal Copa do Mundo 2026
+
+Código refeito de forma mais organizada, bonita e sem erros.
+
+```html
 <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Copa 2026</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:#07111f;
+color:white;
+overflow-x:hidden;
+}
+
+/* HEADER */
+
+header{
+background:#0b1730;
+padding:20px;
+text-align:center;
+box-shadow:0 0 20px cyan;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+header h1{
+font-size:40px;
+color:cyan;
+text-shadow:0 0 15px cyan;
+}
+
+/* MENU */
+
+.menu{
+display:flex;
+justify-content:center;
+gap:20px;
+padding:15px;
+background:#111827;
+flex-wrap:wrap;
+}
+
+.menu a{
+text-decoration:none;
+color:white;
+padding:10px 20px;
+border-radius:10px;
+background:#1f2937;
+transition:0.3s;
+}
+
+.menu a:hover{
+background:cyan;
+color:black;
+transform:scale(1.05);
+}
+
+/* HERO */
+
+.hero{
+height:300px;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1200&auto=format&fit=crop');
+background-size:cover;
+background-position:center;
+}
+
+.hero h2{
+font-size:50px;
+margin-bottom:10px;
+text-shadow:0 0 20px black;
+}
+
+.hero p{
+font-size:22px;
+}
+
+/* PESQUISA */
+
+#search{
+width:80%;
+max-width:600px;
+display:block;
+margin:30px auto;
+padding:15px;
+font-size:18px;
+border:none;
+border-radius:15px;
+background:#111827;
+color:white;
+box-shadow:0 0 15px cyan;
+}
+
+/* TIMES */
+
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:#111827;
+padding:20px;
+border-radius:20px;
+box-shadow:0 0 20px rgba(0,255,255,0.2);
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 25px cyan;
+}
+
+.card h2{
+color:cyan;
+margin-bottom:10px;
+}
+
+.group{
+margin-bottom:15px;
+color:#ccc;
+}
+
+.player{
+background:#1f2937;
+padding:10px;
+border-radius:10px;
+margin:8px 0;
+}
+
+.card button{
+margin-top:15px;
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+background:cyan;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+.card button:hover{
+transform:scale(1.03);
+}
+
+/* TABELA */
+
+.table-section{
+padding:20px;
+}
+
+.table-section h2{
+margin-bottom:20px;
+color:cyan;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:#111827;
+border-radius:20px;
+overflow:hidden;
+}
+
+th,td{
+padding:15px;
+text-align:center;
+}
+
+th{
+background:cyan;
+color:black;
+}
+
+tr:nth-child(even){
+background:#1f2937;
+}
+
+/* MATA MATA */
+
+.knockout{
+padding:20px;
+}
+
+.knockout h2{
+color:cyan;
+margin-bottom:20px;
+}
+
+.matches{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.match{
+background:#111827;
+padding:20px;
+border-radius:20px;
+box-shadow:0 0 15px rgba(0,255,255,0.2);
+}
+
+.match h3{
+margin-bottom:10px;
+color:cyan;
+}
+
+.match p{
+margin:10px 0;
+}
+
+/* ESTATÍSTICAS */
+
+.stats{
+padding:20px;
+}
+
+.stats h2{
+margin-bottom:20px;
+color:cyan;
+}
+
+.bar{
+height:20px;
+background:#222;
+border-radius:20px;
+overflow:hidden;
+margin-bottom:20px;
+}
+
+.fill{
+height:100%;
+background:cyan;
+box-shadow:0 0 20px cyan;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1730;
+padding:20px;
+text-align:center;
+margin-top:40px;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+header h1{
+font-size:28px;
+}
+
+.hero h2{
+font-size:35px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+
+<header>
+<h1>⚽ COPA DO MUNDO 2026</h1>
+</header>
+
+<!-- MENU -->
+
+<div class="menu">
+<a href="#times">Seleções</a>
+<a href="#grupos">Grupos</a>
+<a href="#mata">Mata-Mata</a>
+<a href="#stats">Estatísticas</a>
+</div>
+
+<!-- HERO -->
+
+<div class="hero">
+<h2>O Maior Evento do Futebol</h2>
+<p>Brasil • Argentina • França • Portugal</p>
+</div>
+
+<!-- PESQUISA -->
+
+<input type="text" id="search" placeholder="Pesquisar seleção ou jogador...">
+
+<!-- TIMES -->
+
+<div class="container" id="teams"></div>
+
+<!-- TABELA -->
+
+<div class="table-section" id="grupos">
+<h2>📋 Fase de Grupos</h2>
+
+<table>
+<tr>
+<th>Grupo</th>
+<th>Seleção</th>
+<th>Pontos</th>
+</tr>
+
+<tr>
+<td>A</td>
+<td>🇦🇷 Argentina</td>
+<td>6</td>
+</tr>
+
+<tr>
+<td>A</td>
+<td>🇵🇹 Portugal</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td>B</td>
+<td>🇧🇷 Brasil</td>
+<td>9</td>
+</tr>
+
+<tr>
+<td>B</td>
+<td>🇫🇷 França</td>
+<td>6</td>
+</tr>
+
+</table>
+</div>
+
+<!-- MATA MATA -->
+
+<div class="knockout" id="mata">
+<h2>🏆 Mata-Mata</h2>
+
+<div class="matches">
+
+<div class="match">
+<h3>Quartas</h3>
+<p>🇧🇷 Brasil x França 🇫🇷</p>
+<p>🇦🇷 Argentina x Portugal 🇵🇹</p>
+</div>
+
+<div class="match">
+<h3>Semi Final</h3>
+<p>Brasil x Argentina</p>
+</div>
+
+<div class="match">
+<h3>Final</h3>
+<p>Brasil x França</p>
+</div>
+
+</div>
+</div>
+
+<!-- ESTATÍSTICAS -->
+
+<div class="stats" id="stats">
+<h2>📊 Estatísticas</h2>
+
+<p>Posse de Bola</p>
+<div class="bar">
+<div class="fill" style="width:80%"></div>
+</div>
+
+<p>Passes</p>
+<div class="bar">
+<div class="fill" style="width:70%"></div>
+</div>
+
+<p>Finalizações</p>
+<div class="bar">
+<div class="fill" style="width:90%"></div>
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+<p>⚽ Portal Copa do Mundo 2026</p>
+</footer>
+
+<script>
+
+const teams = [
+{
+flag:"🇧🇷",
+name:"Brasil",
+group:"Grupo B",
+players:[
+"Neymar",
+"Vinícius Jr",
+"Rodrygo",
+"Alisson"
+]
+},
+
+{
+flag:"🇦🇷",
+name:"Argentina",
+group:"Grupo A",
+players:[
+"Messi",
+"Lautaro",
+"Di María"
+]
+},
+
+{
+flag:"🇫🇷",
+name:"França",
+group:"Grupo B",
+players:[
+"Mbappé",
+"Griezmann",
+"Camavinga"
+]
+},
+
+{
+flag:"🇵🇹",
+name:"Portugal",
+group:"Grupo A",
+players:[
+"Cristiano Ronaldo",
+"Bruno Fernandes",
+"Bernardo Silva"
+]
+}
+]
+
+const container = document.getElementById("teams")
+const search = document.getElementById("search")
+
+function showTeams(list){
+
+container.innerHTML = ""
+
+list.forEach(team=>{
+
+container.innerHTML += `
+
+<div class="card">
+<h2>${team.flag} ${team.name}</h2>
+<p class="group">${team.group}</p>
 
 ${team.players.map(player=>
 `<div class="player">⚽ ${player}</div>`
 ).join("")}
 
 <button onclick="simular('${team.name}')">
-⚽ Simular Partida
+⚽ Simular Jogo
 </button>
 
 </div>
@@ -35,19 +508,19 @@ showTeams(filtered)
 
 })
 
-/* SIMULAÇÃO */
+/* SIMULADOR */
 
 function simular(team){
 
-const adversarios = [
+const rivals = [
 "Argentina",
 "França",
 "Portugal",
 "Alemanha"
 ]
 
-const rival = adversarios[
-Math.floor(Math.random()*adversarios.length)
+const rival = rivals[
+Math.floor(Math.random()*rivals.length)
 ]
 
 let gols1 = Math.floor(Math.random()*5)
@@ -57,14 +530,18 @@ alert(`${team} ${gols1} x ${gols2} ${rival}`)
 
 }
 
-/* API FUTURA */
-
-// EXEMPLO DE API
-// fetch('https://api-football.com')
-// .then(res => res.json())
-// .then(data => console.log(data))
-
 </script>
 
 </body>
 </html>
+```
+
+## Melhorias futuras
+
+* colocar API de futebol
+* adicionar login
+* colocar fotos dos jogadores
+* criar ranking automático
+* adicionar sons da torcida
+* criar modo escuro/claro
+* colocar tabela atualizando sozinha
