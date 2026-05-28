@@ -518,81 +518,265 @@ table tr:hover td{
 
 <div class="mata-mata-container">
 
+O problema do seu código é que:
+
+* o botão editar não encontra `.edit`
+* a pesquisa não funciona porque falta o array `teams`
+* tem `<style>` e `<section>` dentro da tabela
+* tem JavaScript fora do `<script>`
+* alguns elementos ficaram duplicados
+
+Aqui está a versão ARRUMADA 🔥
+
+```html
 <!-- ===================================== -->
-<!-- 16 AVOS -->
+<!-- BARRA DE PESQUISA -->
 <!-- ===================================== -->
 
-<div class="fase">
+<input type="text" id="search" placeholder="Pesquisar seleção...">
 
-<h2>🔥 16 Avos</h2>
+<!-- ===================================== -->
+<!-- BOTÕES -->
+<!-- ===================================== -->
 
-<div class="match">Brasil 🇧🇷 vs Portugal 🇵🇹</div>
-<div class="match">Argentina 🇦🇷 vs México 🇲🇽</div>
-<div class="match">França 🇫🇷 vs Japão 🇯🇵</div>
-<div class="match">Espanha 🇪🇸 vs Alemanha 🇩🇪</div>
-<div class="match">Inglaterra 🏴 vs Senegal 🇸🇳</div>
-<div class="match">Itália 🇮🇹 vs Croácia 🇭🇷</div>
-<div class="match">Holanda 🇳🇱 vs Estados Unidos 🇺🇸</div>
-<div class="match">Uruguai 🇺🇾 vs Bélgica 🇧🇪</div>
+<div class="buttons">
 
-<div class="match">Marrocos 🇲🇦 vs Suíça 🇨🇭</div>
-<div class="match">Dinamarca 🇩🇰 vs Chile 🇨🇱</div>
-<div class="match">Canadá 🇨🇦 vs Nigéria 🇳🇬</div>
-<div class="match">Austrália 🇦🇺 vs Polônia 🇵🇱</div>
-<div class="match">Turquia 🇹🇷 vs Irã 🇮🇷</div>
-<div class="match">Suécia 🇸🇪 vs Coreia do Sul 🇰🇷</div>
-<div class="match">Paraguai 🇵🇾 vs Egito 🇪🇬</div>
-<div class="match">Costa Rica 🇨🇷 vs Camarões 🇨🇲</div>
+<button onclick="editar()">
+✏️ Editar
+</button>
+
+<button onclick="salvar()">
+💾 Salvar
+</button>
 
 </div>
 
 <!-- ===================================== -->
-<!-- OITAVAS -->
+<!-- TIMES -->
 <!-- ===================================== -->
 
-<div class="fase">
+<div class="container" id="teams"></div>
 
-<h2>⚡ Oitavas</h2>
+<!-- ===================================== -->
+<!-- CSS -->
+<!-- ===================================== -->
 
-<div class="match">Brasil 🇧🇷 vs Argentina 🇦🇷</div>
-<div class="match">França 🇫🇷 vs Espanha 🇪🇸</div>
-<div class="match">Inglaterra 🏴 vs Itália 🇮🇹</div>
-<div class="match">Holanda 🇳🇱 vs Uruguai 🇺🇾</div>
+<style>
 
-<div class="match">Marrocos 🇲🇦 vs Dinamarca 🇩🇰</div>
-<div class="match">Nigéria 🇳🇬 vs Austrália 🇦🇺</div>
-<div class="match">Turquia 🇹🇷 vs Suécia 🇸🇪</div>
-<div class="match">Paraguai 🇵🇾 vs Costa Rica 🇨🇷</div>
+.buttons{
+display:flex;
+gap:10px;
+justify-content:center;
+margin:20px;
+}
+
+button{
+padding:12px 20px;
+border:none;
+border-radius:10px;
+background:cyan;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:#111827;
+padding:20px;
+border-radius:15px;
+}
+
+.card h2{
+color:cyan;
+margin-bottom:10px;
+}
+
+.player{
+background:#1f2937;
+padding:10px;
+border-radius:10px;
+margin:5px 0;
+}
+
+.editando{
+border:2px solid lime;
+}
+
+#search{
+width:80%;
+max-width:500px;
+display:block;
+margin:20px auto;
+padding:15px;
+border:none;
+border-radius:10px;
+background:#111827;
+color:white;
+font-size:18px;
+}
+
+</style>
+
+<!-- ===================================== -->
+<!-- JAVASCRIPT -->
+<!-- ===================================== -->
+
+<script>
+
+// =====================================
+// TIMES
+// =====================================
+
+const teams = [
+
+{
+name:"Brasil 🇧🇷",
+group:"Grupo A",
+players:[
+"Alisson",
+"Marquinhos",
+"Vinicius Jr",
+"Neymar"
+]
+},
+
+{
+name:"Argentina 🇦🇷",
+group:"Grupo B",
+players:[
+"Messi",
+"Di Maria",
+"Julian Alvarez",
+"Otamendi"
+]
+},
+
+{
+name:"França 🇫🇷",
+group:"Grupo C",
+players:[
+"Mbappé",
+"Griezmann",
+"Dembélé",
+"Camavinga"
+]
+}
+
+]
+
+// =====================================
+// MOSTRAR TIMES
+// =====================================
+
+const container = document.getElementById("teams")
+
+function showTeams(list){
+
+container.innerHTML = ""
+
+list.forEach(team => {
+
+container.innerHTML += `
+
+<div class="card edit">
+
+<h2 contenteditable="false">
+${team.name}
+</h2>
+
+<p>${team.group}</p>
+
+${team.players.map(player => `
+
+<div class="player" contenteditable="false">
+
+${player}
 
 </div>
 
-<!-- ===================================== -->
-<!-- QUARTAS -->
-<!-- ===================================== -->
-
-<div class="fase">
-
-<h2>🚀 Quartas</h2>
-
-<div class="match">Brasil 🇧🇷 vs França 🇫🇷</div>
-<div class="match">Itália 🇮🇹 vs Holanda 🇳🇱</div>
-<div class="match">Marrocos 🇲🇦 vs Nigéria 🇳🇬</div>
-<div class="match">Turquia 🇹🇷 vs Paraguai 🇵🇾</div>
+`).join("")}
 
 </div>
 
-<!-- ===================================== -->
-<!-- SEMIFINAL -->
-<!-- ===================================== -->
+`
 
-<div class="fase">
+})
 
-<h2>🏅 Semifinal</h2>
+}
 
-<div class="match">Brasil 🇧🇷 vs Itália 🇮🇹</div>
-<div class="match">Nigéria 🇳🇬 vs Turquia 🇹🇷</div>
+showTeams(teams)
 
-</div>
+// =====================================
+// PESQUISA
+// =====================================
+
+const search = document.getElementById("search")
+
+search.addEventListener("keyup", () => {
+
+const value = search.value.toLowerCase()
+
+const filtered = teams.filter(team =>
+
+team.name.toLowerCase().includes(value)
+
+)
+
+showTeams(filtered)
+
+})
+
+// =====================================
+// EDITAR
+// =====================================
+
+function editar(){
+
+const campos = document.querySelectorAll("[contenteditable]")
+
+campos.forEach(campo => {
+
+campo.contentEditable = true
+
+campo.classList.add("editando")
+
+})
+
+}
+
+// =====================================
+// SALVAR
+// =====================================
+
+function salvar(){
+
+const campos = document.querySelectorAll("[contenteditable]")
+
+campos.forEach(campo => {
+
+campo.contentEditable = false
+
+campo.classList.remove("editando")
+
+})
+
+alert("Alterações salvas!")
+
+}
+
+</script>
+```
+
 
 <!-- ===================================== -->
 <!-- FINAL -->
