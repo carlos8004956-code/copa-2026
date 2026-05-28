@@ -1,461 +1,87 @@
+<!-- ========================================= -->
+<!-- index.html -->
+<!-- ========================================= -->
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Copa do Mundo 2062</title>
 
-<style>
+<link rel="stylesheet" href="style.css">
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial;
-}
-
-body{
-background:#050b18;
-color:white;
-overflow-x:hidden;
-}
-
-/* ===================================== */
-/* TELA DE ENTRADA */
-/* ===================================== */
-
-.intro{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-background:linear-gradient(#000000d8,#000000d8),
-url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1600');
-background-size:cover;
-background-position:center;
-text-align:center;
-}
-
-.trophy{
-font-size:120px;
-animation:girar 4s infinite linear;
-}
-
-@keyframes girar{
-0%{transform:rotateY(0deg);}
-100%{transform:rotateY(360deg);}
-}
-
-.intro h1{
-font-size:60px;
-margin-top:20px;
-color:gold;
-text-shadow:0 0 20px gold;
-}
-
-.intro p{
-font-size:22px;
-margin-top:10px;
-}
-
-.enter-btn{
-margin-top:30px;
-padding:15px 40px;
-font-size:20px;
-border:none;
-border-radius:15px;
-background:gold;
-cursor:pointer;
-font-weight:bold;
-transition:0.3s;
-}
-
-.enter-btn:hover{
-transform:scale(1.1);
-}
-
-/* ===================================== */
-/* HEADER */
-/* ===================================== */
-
-header{
-background:#0b1730;
-padding:20px;
-text-align:center;
-position:sticky;
-top:0;
-z-index:1000;
-box-shadow:0 0 20px cyan;
-}
-
-header h1{
-font-size:40px;
-color:cyan;
-}
-
-/* ===================================== */
-/* MENU */
-/* ===================================== */
-
-.menu{
-display:flex;
-justify-content:center;
-gap:20px;
-padding:15px;
-background:#111827;
-flex-wrap:wrap;
-}
-
-.menu a{
-text-decoration:none;
-color:white;
-padding:12px 20px;
-background:#1f2937;
-border-radius:10px;
-transition:0.3s;
-}
-
-.menu a:hover{
-background:cyan;
-color:black;
-}
-
-/* ===================================== */
-/* PESQUISA */
-/* ===================================== */
-
-#search{
-width:80%;
-max-width:600px;
-padding:15px;
-margin:30px auto;
-display:block;
-border:none;
-border-radius:15px;
-background:#111827;
-color:white;
-font-size:18px;
-}
-
-/* ===================================== */
-/* TIMES */
-/* ===================================== */
-
-.container{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:20px;
-padding:20px;
-}
-
-.card{
-background:#111827;
-padding:20px;
-border-radius:20px;
-transition:0.3s;
-box-shadow:0 0 15px rgba(0,255,255,0.2);
-}
-
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 20px cyan;
-}
-
-.card h2{
-color:cyan;
-margin-bottom:10px;
-}
-
-.player{
-background:#1f2937;
-padding:10px;
-border-radius:10px;
-margin:8px 0;
-}
-
-/* ===================================== */
-/* GRUPOS */
-/* ===================================== */
-
-.grupos{
-padding:20px;
-}
-
-.group-box{
-background:#111827;
-padding:20px;
-border-radius:20px;
-margin-bottom:30px;
-}
-
-.group-box h2{
-color:cyan;
-margin-bottom:20px;
-}
-
-.group-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:15px;
-}
-
-.team{
-background:#1f2937;
-padding:15px;
-border-radius:10px;
-text-align:center;
-}
-
-/* ===================================== */
-/* MATA MATA */
-/* ===================================== */
-
-.knockout{
-padding:20px;
-}
-
-.matches{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-.match{
-background:#111827;
-padding:20px;
-border-radius:15px;
-text-align:center;
-}
-
-/* ===================================== */
-/* ESTÁDIOS */
-/* ===================================== */
-
-.stadiums{
-padding:20px;
-}
-
-.stadium-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:20px;
-}
-
-.stadium{
-background:#111827;
-padding:20px;
-border-radius:20px;
-}
-
-.stadium img{
-width:100%;
-border-radius:15px;
-margin-bottom:15px;
-}
-
-/* ===================================== */
-/* BOTÕES */
-/* ===================================== */
-
-.buttons{
-display:flex;
-justify-content:center;
-gap:15px;
-margin:30px;
-}
-
-button{
-padding:15px 25px;
-border:none;
-border-radius:10px;
-background:cyan;
-font-weight:bold;
-cursor:pointer;
-}
-
-/* ===================================== */
-/* FOOTER */
-/* ===================================== */
-
-footer{
-background:#0b1730;
-padding:20px;
-text-align:center;
-margin-top:40px;
-}
-
-/* ===================================== */
-/* RESPONSIVO */
-/* ===================================== */
-
-@media(max-width:768px){
-
-.intro h1{
-font-size:40px;
-}
-
-header h1{
-font-size:28px;
-}
-
-}
-
-</style>
 </head>
+
 <body>
 
-<!-- ===================================== -->
-<!-- TELA DE ENTRADA -->
-<!-- ===================================== -->
-
-<section class="intro">
-
-<div class="trophy">🏆</div>
-
-<h1>COPA DO MUNDO 2062</h1>
-
-<p>O maior portal de futebol do planeta</p>
-
-<button class="enter-btn" onclick="entrar()">
-ENTRAR
-</button>
-
-</section>
-
-<!-- ===================================== -->
+<!-- ========================================= -->
 <!-- HEADER -->
-<!-- ===================================== -->
+<!-- ========================================= -->
 
 <header>
 
-<h1>⚽ PORTAL COPA 2062</h1>
+<h1>🏆 COPA DO MUNDO 2062</h1>
+
+<p>Portal Oficial do Torneio</p>
 
 </header>
 
-<!-- ===================================== -->
+<!-- ========================================= -->
 <!-- MENU -->
-<!-- ===================================== -->
+<!-- ========================================= -->
 
-<div class="menu">
+<nav>
 
 <a href="#times">Seleções</a>
-<a href="#grupos">Grupos</a>
-<a href="#mata">Mata-Mata</a>
 <a href="#estadios">Estádios</a>
 
-</div>
+</nav>
 
-<!-- ===================================== -->
+<!-- ========================================= -->
 <!-- PESQUISA -->
-<!-- ===================================== -->
+<!-- ========================================= -->
 
-<input type="text" id="search" placeholder="Pesquisar seleção...">
+<input type="text" id="search"
+placeholder="Pesquisar time, jogador, grupo ou estádio...">
 
-<!-- ===================================== -->
-<!-- BOTÕES -->
-<!-- ===================================== -->
-
-<div class="buttons">
-
-<button onclick="editar()">
-✏️ Editar
-</button>
-
-<button onclick="salvar()">
-💾 Salvar
-</button>
-
-</div>
-
-<!-- ===================================== -->
+<!-- ========================================= -->
 <!-- TIMES -->
-<!-- ===================================== -->
+<!-- ========================================= -->
 
 <section id="times">
+
+<h2>🌍 Seleções</h2>
 
 <div class="container" id="teams"></div>
 
 </section>
 
-<!-- ===================================== -->
-<!-- GRUPOS -->
-<!-- ===================================== -->
+<!-- ========================================= -->
+<!-- ÁREA DA SELEÇÃO -->
+<!-- ========================================= -->
 
-<section class="grupos" id="grupos">
+<section id="seleção">
 
-<h1>🏆 Grupos da Copa</h1>
+<h2>⚽ Informações do Time</h2>
 
-<div class="group-box">
+<div id="team-info">
 
-<h2>Grupo A</h2>
-
-<div class="group-grid">
-
-<div class="team">Brasil 🇧🇷</div>
-<div class="team">México 🇲🇽</div>
-<div class="team">Japão 🇯🇵</div>
-<div class="team">Canadá 🇨🇦</div>
-
-</div>
-
-</div>
-
-<div class="group-box">
-
-<h2>Grupo B</h2>
-
-<div class="group-grid">
-
-<div class="team">Argentina 🇦🇷</div>
-<div class="team">Portugal 🇵🇹</div>
-<div class="team">Nigéria 🇳🇬</div>
-<div class="team">Austrália 🇦🇺</div>
-
-</div>
+<h3>Clique em um time</h3>
 
 </div>
 
 </section>
 
-<!-- ===================================== -->
-<!-- MATA MATA -->
-<!-- ===================================== -->
-
-<section class="knockout" id="mata">
-
-<h1>🔥 Mata-Mata</h1>
-
-<div class="matches">
-
-<div class="match">
-Brasil 🇧🇷 vs Portugal 🇵🇹
-</div>
-
-<div class="match">
-Argentina 🇦🇷 vs França 🇫🇷
-</div>
-
-<div class="match">
-Alemanha 🇩🇪 vs Espanha 🇪🇸
-</div>
-
-<div class="match">
-Inglaterra 🏴 vs Itália 🇮🇹
-</div>
-
-</div>
-
-</section>
-
-<!-- ===================================== -->
+<!-- ========================================= -->
 <!-- ESTÁDIOS -->
-<!-- ===================================== -->
+<!-- ========================================= -->
 
-<section class="stadiums" id="estadios">
+<section id="estadios">
 
-<h1>🏟️ Estádios</h1>
+<h2>🏟️ Estádios</h2>
 
 <div class="stadium-grid">
 
@@ -463,9 +89,16 @@ Inglaterra 🏴 vs Itália 🇮🇹
 
 <img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?q=80&w=1200">
 
-<h2>Neo Stadium</h2>
+<h3>Neo Arena</h3>
 
-<p>📍 São Paulo - Brasil</p>
+<p>📍 São Paulo</p>
+
+<p>👥 80.000 pessoas</p>
+
+<iframe
+src="https://www.google.com/maps/embed?pb=!1m18"
+loading="lazy">
+</iframe>
 
 </div>
 
@@ -473,9 +106,16 @@ Inglaterra 🏴 vs Itália 🇮🇹
 
 <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=1200">
 
-<h2>Future Arena</h2>
+<h3>Future Stadium</h3>
 
-<p>📍 Tóquio - Japão</p>
+<p>📍 Tóquio</p>
+
+<p>👥 95.000 pessoas</p>
+
+<iframe
+src="https://www.google.com/maps/embed?pb=!1m18"
+loading="lazy">
+</iframe>
 
 </div>
 
@@ -483,178 +123,15 @@ Inglaterra 🏴 vs Itália 🇮🇹
 
 </section>
 
-<!-- ===================================== -->
-<!-- FOOTER -->
-<!-- ===================================== -->
+<!-- ========================================= -->
+<!-- FIREBASE -->
+<!-- ========================================= -->
 
-<footer>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
 
-<p>⚽ Copa do Mundo 2062</p>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
 
-</footer>
-
-<!-- ===================================== -->
-<!-- JAVASCRIPT -->
-<!-- ===================================== -->
-
-<script>
-
-// =====================================
-// ENTRAR
-// =====================================
-
-function entrar(){
-
-window.scrollTo({
-top:window.innerHeight,
-behavior:"smooth"
-})
-
-}
-
-// =====================================
-// TIMES
-// =====================================
-
-const teams = [
-
-{
-name:"Brasil 🇧🇷",
-players:[
-"Alisson",
-"Marquinhos",
-"Vinicius Jr",
-"Neymar"
-]
-},
-
-{
-name:"Argentina 🇦🇷",
-players:[
-"Messi",
-"Julian Alvarez",
-"Otamendi",
-"Di Maria"
-]
-},
-
-{
-name:"França 🇫🇷",
-players:[
-"Mbappé",
-"Griezmann",
-"Dembélé",
-"Camavinga"
-]
-},
-
-{
-name:"Portugal 🇵🇹",
-players:[
-"Cristiano Ronaldo",
-"Bruno Fernandes",
-"Bernardo Silva",
-"Rafael Leão"
-]
-}
-
-]
-
-// =====================================
-// MOSTRAR TIMES
-// =====================================
-
-const container = document.getElementById("teams")
-
-function showTeams(list){
-
-container.innerHTML = ""
-
-list.forEach(team=>{
-
-container.innerHTML += `
-
-<div class="card edit">
-
-<h2 contenteditable="false">
-${team.name}
-</h2>
-
-${team.players.map(player=>`
-
-<div class="player" contenteditable="false">
-
-⚽ ${player}
-
-</div>
-
-`).join("")}
-
-</div>
-
-`
-
-})
-
-}
-
-showTeams(teams)
-
-// =====================================
-// PESQUISA
-// =====================================
-
-const search = document.getElementById("search")
-
-search.addEventListener("keyup",()=>{
-
-const value = search.value.toLowerCase()
-
-const filtered = teams.filter(team=>
-
-team.name.toLowerCase().includes(value)
-
-)
-
-showTeams(filtered)
-
-})
-
-// =====================================
-// EDITAR
-// =====================================
-
-function editar(){
-
-const campos = document.querySelectorAll("[contenteditable]")
-
-campos.forEach(campo=>{
-
-campo.contentEditable = true
-
-})
-
-}
-
-// =====================================
-// SALVAR
-// =====================================
-
-function salvar(){
-
-const campos = document.querySelectorAll("[contenteditable]")
-
-campos.forEach(campo=>{
-
-campo.contentEditable = false
-
-})
-
-alert("Alterações salvas!")
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
